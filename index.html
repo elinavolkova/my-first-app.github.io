@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" 
-          content="width=device-width, user-scalable=no, initial-scale=1., maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatable" content="ie=edge">
     <title>Shop</title>
     <style>
@@ -30,7 +30,7 @@
             margin-bottom: 10px;
         }
         img {
-            width: 70px;
+            width: 150px;
             margin: 30px auto;
         }
         p {
@@ -53,6 +53,18 @@
         button:hover {
             background: var(--tg-theme-secondary-bg-color);
         }
+        input {
+            width: 90%;
+            outline: none;
+            margin: 10px 5%;
+            padding: 15px 10px;
+            font-size: 14px;
+            border: 2px solid silver;
+            border-radius: 5px; 
+        }
+        input:focus {
+            border-color: #db5d5d;
+        }
     </style>
 </head>
 <body>
@@ -62,7 +74,28 @@
         <p>Choose your croissant</p>
         <button id="buy">Make a purchase</button>
     </div>
+    <form id="form">
+        <input type="text" placeholder="Name" id="user_name">
+        <input type="text" placeholder="Email" id="user_email">
+        <input type="text" placeholder="Phone" id="user_phone">
+        <button id="order">Confirm</button>
+    </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let buy = document.getElementById("buy");
+        let order = document.getElementById("order");
+
+        buy.addEventListener("click", () => {
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+            document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+        })
+
+        order.addEventListener("click", () => {
+            tg.close();
+        })
+    </script>
 </body>
 </html>
 
