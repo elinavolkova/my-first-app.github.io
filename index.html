@@ -107,14 +107,14 @@
                 document.getElementById("error").innerText = 'Name is incorrect';
                 return;
             }
-            // if (email.length < 5) {
-            //     document.getElementById("error").innerText = 'Email is incorrect';
-            //     return;
-            // }
-            // if (phone.length < 5) {
-            //     document.getElementById("error").innerText = 'Phone is incorrect';
-            //     return;
-            // }
+            if (email.length < 5) {
+                document.getElementById("error").innerText = 'Email is incorrect';
+                return;
+            }
+            if (phone.length < 5) {
+                document.getElementById("error").innerText = 'Phone is incorrect';
+                return;
+            }
             let data = {
                 name: name,
                 email: email,
