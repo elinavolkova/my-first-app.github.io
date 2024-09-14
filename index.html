@@ -90,16 +90,16 @@
         let tg = window.Telegram.WebApp;
         let buy = document.getElementById("buy");
         let order = document.getElementById("order");
-        tg.expand(); 
+        tg.expand(); // чтобы корректно отображалось приложение на телефоне тоже
 
         buy.addEventListener("click", () => {
             document.getElementById("main").style.display = "none";
             document.getElementById("form").style.display = "block";
-            // document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+            document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name; // вставляет данные в строку, но отрабатывает только если Inline Keybord Markup
         })
 
         order.addEventListener("click", () => {
-            document.getElementById("error").innerText = ' ';
+            document.getElementById("error").innerText = '';
             let name = document.getElementById("user_name").value;
             let email = document.getElementById("user_email").value;
             let phone = document.getElementById("user_phone").value;
@@ -120,10 +120,10 @@
                 email: email,
                 phone: phone
             }
-            tg.sendData(JSON.stringify(data));
+            tg.sendData(JSON.stringify(data)); // отправляет данные в Бот, но отрабатывает только если Reply Keybord Markup
             tg.close();
         })
-    </script>
+    </script>  
 </body>
 </html>
 
